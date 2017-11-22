@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Hello, {{request.session.name}}!</h1>
+    <a href="/logout">logout</a>
+
+    <h2>Your Wish List</h2>
+    <table>
+            <tbody>
+                <tr>
+                    <th>Item</th>
+                    <th>Added By</th>
+                    <th>Date Added</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                {% for item in items %}
+                    <td>{{item.item_name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>{{item.user}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td>{{item.created_at}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <!--
+                    <form action="/books/likes/{{book.id}}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="{{book.liked_books}}">
+                    <td><input type="submit" value="Remove from my Wishlist"></td>
+                    </form>
+    
+                    <td>Added By: <a href="/books/user/{{book.uploader.id}}">{{book.uploader.first_name}}</a></td>
+                    -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+    <h2>Other Users' Wish List</h2>
+
+
+    <a href="/wish_list/create">Add Item</a>
+
+
+</body>
+</html>
